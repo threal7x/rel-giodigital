@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Dashboard Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importação de fonte digital ultra-moderna corrigida -->
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <div class="glass-station">
+        <!-- Cabeçalho Dinâmico -->
+        <header class="station-header">
+            <div class="meta-info">
+                <span id="txt-saudacao" class="badge">Iniciando sistema...</span>
+                <span id="txt-data" class="date-display">--/--/----</span>
+            </div>
+            <h1 class="logo">QUANTUM<span>.OS</span></h1>
+        </header>
+
+        <!-- Barra de Navegação entre Sistemas -->
+        <nav class="matrix-nav">
+            <button class="nav-link active" onclick="switchTab('tab-clock')">RELÓGIO</button>
+            <button class="nav-link" onclick="switchTab('tab-chrono')">CRONÔMETRO</button>
+            <button class="nav-link" onclick="switchTab('tab-pomodoro')">POMODORO</button>
+        </nav>
+
+        <!-- ABA 1: RELÓGIO DIGITAL PREMIUM -->
+        <section id="tab-clock" class="tab-content active-content">
+            <div class="display-container grid-clock">
+                <div class="time-block"><span id="h-hours">00</span><p>HORAS</p></div>
+                <div class="pulse-colon">:</div>
+                <div class="time-block"><span id="h-minutes">00</span><p>MINUTOS</p></div>
+                <div class="pulse-colon">:</div>
+                <div class="time-block glow-sec"><span id="h-seconds">00</span><p>SEGUNDOS</p></div>
+            </div>
+            <div class="footer-controls">
+                <button class="btn-premium" id="btn-toggle-format" onclick="toggleFormat()">FORMATO 12H</button>
+            </div>
+        </section>
+
+        <!-- ABA 2: CRONÔMETRO DE ALTA PRECISÃO -->
+        <section id="tab-chrono" class="tab-content">
+            <div class="display-container grid-chrono">
+                <div class="time-block"><span id="c-min">00</span><p>MIN</p></div>
+                <div class="static-colon">:</div>
+                <div class="time-block"><span id="c-sec">00</span><p>SEG</p></div>
+                <div class="static-colon">:</div>
+                <div class="time-block highlight"><span id="c-ms">00</span><p>MIL</p></div>
+            </div>
+            <div class="footer-controls gap-15">
+                <button class="btn-premium success" onclick="startChrono()">INICIAR</button>
+                <button class="btn-premium warning" onclick="pauseChrono()">PAUSAR</button>
+                <button class="btn-premium danger" onclick="resetChrono()">ZERAR</button>
+            </div>
+        </section>
+
+        <!-- ABA 3: TEMPORIZADOR POMODORO -->
+        <section id="tab-pomodoro" class="tab-content">
+            <div class="display-container single-display">
+                <div class="time-block large">
+                    <span id="p-display">25:00</span>
+                    <p id="p-status">MODO FOCO</p>
+                </div>
+            </div>
+            <div class="footer-controls gap-15">
+                <button class="btn-premium success" onclick="startPomodoro()">FOCAR</button>
+                <button class="btn-premium warning" onclick="pausePomodoro()">PAUSAR</button>
+                <button class="btn-premium danger" onclick="resetPomodoro()">RESET</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
